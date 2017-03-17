@@ -1,6 +1,6 @@
-package hackerrank.ns.contest;
+package hackerrank.ns.contest.w1;
 
-import hackerranck.ns.contest.PalindromicAnagram;
+import hackerranck.ns.contest.w1.PalindromicAnagram;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Test for @{link {@link hackerranck.ns.contest.PalindromicAnagram} class
+ * Test for @{link {@link PalindromicAnagram} class
  */
 public class PalindromicAnagramTest {
 

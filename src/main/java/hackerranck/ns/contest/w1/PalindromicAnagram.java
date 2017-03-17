@@ -1,4 +1,4 @@
-package hackerranck.ns.contest;
+package hackerranck.ns.contest.w1;
 
 import java.util.ArrayList;
 import java.util.Collections;
