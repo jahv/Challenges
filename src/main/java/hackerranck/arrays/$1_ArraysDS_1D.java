@@ -1,4 +1,4 @@
-package main.java.hackerramck.arrays;
+package hackerranck.arrays;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ import java.util.Scanner;
  *
  * Created by ahernandez on 7/6/16.
  */
-public class ArraysDS_1D {
+public class $1_ArraysDS_1D {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
