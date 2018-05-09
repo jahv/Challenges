@@ -3,12 +3,14 @@ package codefight.arcade;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class $2_EdgeOfTheOcean {
 
     /**
-     * Given an array of integers, find the pair of adjacent elements that has the largest product and return that product.
+     * Given an array of integers, find the pair of adjacent elements that has the largest product and return that
+     * product.
      * <p>
      * Example
      * <p>
@@ -45,7 +47,9 @@ public class $2_EdgeOfTheOcean {
     /**
      * Below we will define an n-interesting polygon. Your task is to find the area of a polygon for a given n.
      * <p>
-     * A 1-interesting polygon is just a square with a side of length 1. An n-interesting polygon is obtained by taking the n - 1-interesting polygon and appending 1-interesting polygons to its rim, side by side. You can see the 1-, 2-, 3- and 4-interesting polygons in the picture below.
+     * A 1-interesting polygon is just a square with a side of length 1. An n-interesting polygon is obtained by
+     * taking the n - 1-interesting polygon and appending 1-interesting polygons to its rim, side by side. You can
+     * see the 1-, 2-, 3- and 4-interesting polygons in the picture below.
      * <p>
      * <p>
      * <p>
@@ -82,7 +86,10 @@ public class $2_EdgeOfTheOcean {
     }
 
     /**
-     * Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an non-negative integer size. Since he likes to make things perfect, he wants to arrange them from smallest to largest so that each statue will be bigger than the previous one exactly by 1. He may need some additional statues to be able to accomplish that. Help him figure out the minimum number of additional statues needed.
+     * Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an
+     * non-negative integer size. Since he likes to make things perfect, he wants to arrange them from smallest to
+     * largest so that each statue will be bigger than the previous one exactly by 1. He may need some additional
+     * statues to be able to accomplish that. Help him figure out the minimum number of additional statues needed.
      * <p>
      * Example
      * <p>
@@ -104,7 +111,8 @@ public class $2_EdgeOfTheOcean {
      * <p>
      * [output] integer
      * <p>
-     * The minimal number of statues that need to be added to existing statues such that it contains every integer size from an interval [L, R] (for some L, R) and no other sizes.
+     * The minimal number of statues that need to be added to existing statues such that it contains every integer size
+     * from an interval [L, R] (for some L, R) and no other sizes.
      *
      * @param statues
      * @return
@@ -125,7 +133,8 @@ public class $2_EdgeOfTheOcean {
     }
 
     /**
-     * Given a sequence of integers as an array, determine whether it is possible to obtain a strictly increasing sequence by removing no more than one element from the array.
+     * Given a sequence of integers as an array, determine whether it is possible to obtain a strictly increasing
+     * sequence by removing no more than one element from the array.
      * <p>
      * Example
      * <p>
@@ -137,7 +146,8 @@ public class $2_EdgeOfTheOcean {
      * For sequence = [1, 3, 2], the output should be
      * almostIncreasingSequence(sequence) = true.
      * <p>
-     * You can remove 3 from the array to get the strictly increasing sequence [1, 2]. Alternately, you can remove 2 to get the strictly increasing sequence [1, 3].
+     * You can remove 3 from the array to get the strictly increasing sequence [1, 2]. Alternately, you can remove 2 to
+     * get the strictly increasing sequence [1, 3].
      * <p>
      * Input/Output
      * <p>
@@ -150,26 +160,69 @@ public class $2_EdgeOfTheOcean {
      * <p>
      * [output] boolean
      * <p>
-     * Return true if it is possible to remove one element from the array in order to get a strictly increasing sequence, otherwise return false.
+     * Return true if it is possible to remove one element from the array in order to get a strictly increasing
+     * sequence, otherwise return false.
      *
      * @param sequence
      * @return
      */
-    public static boolean almostIncreasingSequence(int[] sequence) {
-        Arrays.sort(sequence);
-        int error = 0;
-        int next = sequence[0] + 1;
-        for(int i = 1; i<sequence.length; i++) {
-            if(sequence[i] != next) {
-                error++;
-                next--;
-                if(error >= 2) {
-                    return false;
+    public static boolean almostIncreasingSequence(int [] sequence) {
+        if (sequence.length <= 2) {
+            return true;
+        } else {
+            Stack<Integer> stack = initStack(sequence[0], sequence[1], sequence[2]);
+
+            if(stack.empty()) {
+                return false;
+            } else {
+
+                int removed = 3 - stack.size();
+
+                for(int i=3; i<sequence.length; i++) {
+                    int last = stack.pop();
+                    int oneBeforeLast = stack.pop();
+
+                    if(sequence[i] > oneBeforeLast && sequence[i] > last) {
+                        stack.push(last);
+                        stack.push(sequence[i]);
+                    } else if(sequence[i] > oneBeforeLast) {
+                        removed++;
+                        stack.push(oneBeforeLast);
+                        stack.push(sequence[i]);
+                    } else {
+                        removed++;
+                        stack.push(oneBeforeLast);
+                        stack.push(last);
+                    }
+
+                    if(removed > 1) {
+                        return false;
+                    }
                 }
             }
-            next++;
+            return true;
         }
-        return true;
     }
+
+    public static Stack<Integer> initStack(int a, int b, int c) {
+        Stack<Integer> stack = new Stack<>();
+
+        if (c > b && b > a) {
+            stack.push(a);
+            stack.push(b);
+            stack.push(c);
+        } else if (c > b){
+            stack.push(b);
+            stack.push(c);
+        } else if (c > a) {
+            stack.push(a);
+            stack.push(c);
+        } else if (b > a) {
+            stack.push(a);
+            stack.push(b);
+        }
+        return stack;
+    }
+
 
 }

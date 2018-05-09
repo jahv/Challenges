@@ -1,10 +1,11 @@
 package hackerranck.arrays;
 
-import utils.Utils;
-
 import java.util.Scanner;
 
-public class $3_DynamicArray {
+/**
+ * https://www.hackerrank.com/challenges/dynamic-array/problem
+ */
+public class $3_DynamicArray_notWorked {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
