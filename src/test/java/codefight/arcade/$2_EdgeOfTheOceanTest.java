@@ -97,4 +97,21 @@ public class $2_EdgeOfTheOceanTest {
 
         Assert.assertTrue($2_EdgeOfTheOcean.initStack(1,-2,-8).empty());
     }
+
+    @Test
+    public void matrixElementsSumTest() {
+        int matrix[][] = new int[][]{
+                {0,1,1,2},
+                {0,5,0,0},
+                {2,0,3,3},
+        };
+        Assert.assertEquals(9, $2_EdgeOfTheOcean.matrixElementsSum(matrix));
+
+        matrix = new int[][]{
+                {1,1,1,0},
+                {0,5,0,1},
+                {2,1,3,10},
+        };
+        Assert.assertEquals(9, $2_EdgeOfTheOcean.matrixElementsSum(matrix));
+    }
 }
