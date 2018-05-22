@@ -2,6 +2,7 @@ package codefight.arcade;
 
 import org.junit.Assert;
 import org.junit.Test;
+import utils.UtilsTests;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,19 +14,12 @@ public class $3_SmoothSailingTest {
         String inputArray[] = new String[]{"aba", "aa", "ad", "vcd", "aba"};
         String expected[] = new String[]{"aba", "vcd", "aba"};
         String actual[] = $3_SmoothSailing.allLongestStrings(inputArray);
-        assertArrays(expected, actual);
+        UtilsTests.assertArrays(expected, actual);
 
         inputArray = new String[]{"abc", "eeee", "abcd", "dcd"};
         expected = new String[]{"eeee", "abcd"};
         actual = $3_SmoothSailing.allLongestStrings(inputArray);
-        assertArrays(expected, actual);
-    }
-
-    private void assertArrays(String expected[], String actual[]) {
-        Assert.assertEquals(expected.length, actual.length);
-        for(int i=0; i<expected.length; i++) {
-            Assert.assertTrue(expected[i].equals(actual[i]));
-        }
+        UtilsTests.assertArrays(expected, actual);
     }
 
     @Test
@@ -58,5 +52,37 @@ public class $3_SmoothSailingTest {
 
         Assert.assertEquals(3, $3_SmoothSailing.commonCharacterCount("aabcc","adcaa"));
 
+    }
+
+    @Test
+    public void isLuckyTest() {
+        Assert.assertTrue($3_SmoothSailing.isLucky(1230));
+        Assert.assertFalse($3_SmoothSailing.isLucky(239017));
+        Assert.assertTrue($3_SmoothSailing.isLucky(134008));
+        Assert.assertFalse($3_SmoothSailing.isLucky(10));
+        Assert.assertTrue($3_SmoothSailing.isLucky(11));
+        Assert.assertTrue($3_SmoothSailing.isLucky(1010));
+        Assert.assertFalse($3_SmoothSailing.isLucky(261534));
+        Assert.assertFalse($3_SmoothSailing.isLucky(100000));
+        Assert.assertTrue($3_SmoothSailing.isLucky(999999));
+        Assert.assertTrue($3_SmoothSailing.isLucky(123321));
+    }
+
+    @Test
+    public void sortByHeightTest() {
+        UtilsTests.assertArrays(new int[]{-1, 150, 160, 170, -1, -1, 180, 190}, $3_SmoothSailing.sortByHeight(new int[]{-1, 150, 190, 170, -1, -1, 160, 180}));
+        UtilsTests.assertArrays(new int[]{-1, -1, -1, -1, -1}, $3_SmoothSailing.sortByHeight(new int[]{-1, -1, -1, -1, -1}));
+        UtilsTests.assertArrays(new int[]{2, 2, 4, 9, 11, 16}, $3_SmoothSailing.sortByHeight(new int[]{4, 2, 9, 11, 2, 16}));
+    }
+
+    @Test
+    public void reverseParenthesesTest() {
+        Assert.assertEquals("acbde",$3_SmoothSailing.reverseParentheses("a(bc)de"));
+        Assert.assertEquals("apmnolkjihgfedcbq",$3_SmoothSailing.reverseParentheses("a(bcdefghijkl(mno)p)q"));
+        Assert.assertEquals("cosfighted",$3_SmoothSailing.reverseParentheses("co(de(fight)s)"));
+        Assert.assertEquals("CodeegnlleahC",$3_SmoothSailing.reverseParentheses("Code(Cha(lle)nge)"));
+        Assert.assertEquals("Where are the parentheses?",$3_SmoothSailing.reverseParentheses("Where are the parentheses?"));
+        Assert.assertEquals("abcabcabcabc",$3_SmoothSailing.reverseParentheses("abc(cba)ab(bac)c"));
+        Assert.assertEquals("The god quick nworb xof jumps over the lazy",$3_SmoothSailing.reverseParentheses("The ((quick (brown) (fox) jumps over the lazy) dog)"));
     }
 }

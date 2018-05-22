@@ -1,11 +1,13 @@
 package codefight.arcade;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 public class $3_SmoothSailing {
 
@@ -134,5 +136,136 @@ public class $3_SmoothSailing {
                 result.put(s.charAt(i), count+1);
             }
         }
+    }
+
+    /**
+     * Ticket numbers usually consist of an even number of digits. A ticket number is considered lucky if the sum of
+     * the first half of the digits is equal to the sum of the second half.
+
+     Given a ticket number n, determine if it's lucky or not.
+
+     Example
+
+     For n = 1230, the output should be
+     isLucky(n) = true;
+     For n = 239017, the output should be
+     isLucky(n) = false.
+     Input/Output
+
+     [execution time limit] 3 seconds (java)
+
+     [input] integer n
+
+     A ticket number represented as a positive integer with an even number of digits.
+
+     Guaranteed constraints:
+     10 ≤ n < 106.
+
+     [output] boolean
+
+     true if n is a lucky ticket number, false otherwise.
+     * @param n
+     * @return
+     */
+    public static boolean isLucky(int n) {
+        char[] number = String.valueOf(n).toCharArray();
+
+        int firstHalf = 0;
+        for(int i=0; i<number.length/2; i++) {
+//            System.out.print(number[i]);
+            firstHalf += Integer.valueOf(number[i]);
+        }
+        System.out.println();
+        int secondHalf = 0;
+        for(int i=number.length/2; i<number.length; i++) {
+//            System.out.print(number[i]);
+            secondHalf += Integer.valueOf(number[i]);
+        }
+
+        return firstHalf == secondHalf;
+    }
+
+    /**
+     * Some people are standing in a row in a park. There are trees between them which cannot be moved.
+     * Your task is to rearrange the people by their heights in a non-descending order without moving the trees.
+
+     Example
+
+     For a = [-1, 150, 190, 170, -1, -1, 160, 180], the output should be
+     sortByHeight(a) = [-1, 150, 160, 170, -1, -1, 180, 190].
+
+     Input/Output
+
+     [execution time limit] 3 seconds (java)
+
+     [input] array.integer a
+
+     If a[i] = -1, then the ith position is occupied by a tree. Otherwise a[i] is the height of a person standing
+     in the ith position.
+
+     Guaranteed constraints:
+     5 ≤ a.length ≤ 15,
+     -1 ≤ a[i] ≤ 200.
+
+     [output] array.integer
+
+     Sorted array a with all the trees untouched.
+     * @param a
+     * @return
+     */
+    public static int[] sortByHeight(int[] a) {
+        List<Integer> people = new ArrayList<>();
+        for(int i=0; i<a.length; i++) {
+            if(a[i] > -1) {
+                people.add(a[i]);
+            }
+        }
+        Collections.sort(people);
+        for(int i=0; i<a.length; i++) {
+            if(a[i] > -1) {
+                a[i] = people.remove(0);
+            }
+        }
+        return a;
+    }
+
+    /**
+     * You have a string s that consists of English letters, punctuation marks, whitespace characters, and brackets.
+     * It is guaranteed that the parentheses in s form a regular bracket sequence.
+
+     Your task is to reverse the strings contained in each pair of matching parentheses, starting from the innermost
+     pair. The results string should not contain any parentheses.
+
+     Example
+
+     For string s = "a(bc)de", the output should be
+     reverseParentheses(s) = "acbde".
+
+     * @param s
+     * @return
+     */
+    public static String reverseParentheses(String s) {
+        List<Integer> index = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+        for(int i=0; i<s.length(); i++) {
+            if(s.charAt(i) == '(') {
+                stack.push(i);
+            }
+            if(s.charAt(i) == ')') {
+                index.add(stack.pop());
+                index.add(i);
+            }
+        }
+
+        while(index.size() > 0) {
+            int start = index.remove(0);
+            int end = index.remove(0);
+
+            StringBuilder middle = new StringBuilder(s.substring(start, end+1)).reverse();
+            String first = s.substring(0, start);
+            String last = s.substring(end+1, s.length());
+            s = first+middle+last;
+        }
+        return s.replaceAll("\\(","").replaceAll("\\)", "");
     }
 }
