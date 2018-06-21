@@ -64,4 +64,12 @@ public class MatcherPatternTest {
 
     }
 
+    @Test
+    public void regexTest() {
+//        String regex = "\\.\\*\\(AGT\\)\\.\\*\\(ACT\\)\\.\\*\\(CGT\\)\\.\\*";
+//        String pattern = Pattern.compile("aaa", Pattern.CASE_INSENSITIVE);
+
+
+    }
+
 }

@@ -1,10 +1,12 @@
 package codefigths.daily;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class DailyChallengesTest {
 
+    @Ignore
     @Test
     public void pokerChips2Test() {
         Assert.assertEquals(3, DailyChallenges.pokerChips2(new int[]{4,5,6,10,5}));

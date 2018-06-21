@@ -1,6 +1,7 @@
 package hackerrank.ns.contest.w5;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import hackerranck.ns.contest.w5.RepeatString;
@@ -41,6 +42,7 @@ public class RepeatStringTest {
 //
 //    }
 
+    @Ignore
     @Test
     public void analizeTest() {
         RepeatString.find("flflabcdeghijk");
@@ -61,6 +63,7 @@ public class RepeatStringTest {
         RepeatString.analize2("x");
     }
 
+    @Ignore
     @Test
     public void analize3Test() {
 //        RepeatString.analize3("flflabcdeghijk");
