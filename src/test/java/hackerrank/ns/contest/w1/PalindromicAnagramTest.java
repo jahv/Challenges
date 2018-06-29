@@ -32,7 +32,7 @@ public class PalindromicAnagramTest {
                 Character.valueOf('M'), Character.valueOf('A'), Character.valueOf('D'),
                 Character.valueOf('A'), Character.valueOf('M')
         ));
-        Assert.assertTrue(PalindromicAnagram.isPalindrome(data));
+        Assert.assertFalse(PalindromicAnagram.isPalindrome(data));
     }
 
     /**
