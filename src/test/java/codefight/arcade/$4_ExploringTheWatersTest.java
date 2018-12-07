@@ -40,4 +40,42 @@ public class $4_ExploringTheWatersTest {
         };
         Assert.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void similarBySwapTest() {
+        int []a = new int[]{1, 2, 3, 4};
+        int []b = new int[]{2, 1, 4, 3};
+
+        Assert.assertTrue($4_ExploringTheWaters.similarBySwap(a, b, 0));
+        Assert.assertFalse($4_ExploringTheWaters.similarBySwap(a, b, 1));
+        Assert.assertTrue($4_ExploringTheWaters.similarBySwap(a, b, 2));
+        Assert.assertFalse($4_ExploringTheWaters.similarBySwap(a, b, 3));
+    }
+
+    @Test
+    public void areSimilarTest() {
+        int []a = new int[]{1, 2, 3};
+        int []b = new int[]{1, 2, 3};
+        Assert.assertTrue($4_ExploringTheWaters.areSimilar(a, b));
+
+        a = new int[]{1, 2, 3};
+        b = new int[]{2, 1, 3};
+        Assert.assertTrue($4_ExploringTheWaters.areSimilar(a, b));
+
+        a = new int[]{1, 2, 2};
+        b = new int[]{2, 1, 1};
+        Assert.assertFalse($4_ExploringTheWaters.areSimilar(a, b));
+
+        a = new int[]{1, 1, 4};
+        b = new int[]{1, 2, 3};
+        Assert.assertFalse($4_ExploringTheWaters.areSimilar(a, b));
+
+        a = new int[]{1, 2, 3};
+        b = new int[]{1, 10, 2};
+        Assert.assertFalse($4_ExploringTheWaters.areSimilar(a, b));
+
+        a = new int[]{2, 3, 1};
+        b = new int[]{1, 3, 2};
+        Assert.assertTrue($4_ExploringTheWaters.areSimilar(a, b));
+    }
 }
