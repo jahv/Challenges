@@ -1,5 +1,8 @@
 package codefight.arcade;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class $4_ExploringTheWaters {
 
     /**
@@ -188,6 +191,55 @@ public class $4_ExploringTheWaters {
             }
         }
         return moves;
+    }
+
+
+    /**
+     * Given a string, find out if its characters can be rearranged to form a palindrome.
+     *
+     * Example
+     *
+     * For inputString = "aabb", the output should be
+     * palindromeRearranging(inputString) = true.
+     *
+     * We can rearrange "aabb" to make "abba", which is a palindrome.
+     *
+     * Input/Output
+     *
+     * [execution time limit] 3 seconds (java)
+     *
+     * [input] string inputString
+     *
+     * A string consisting of lowercase English letters.
+     *
+     * Guaranteed constraints:
+     * 1 ≤ inputString.length ≤ 50.
+     *
+     * [output] boolean
+     *
+     * true if the characters of the inputString can be rearranged to form a palindrome, false otherwise.
+     *
+     * @param inputString
+     * @return
+     */
+    public static boolean palindromeRearranging(String inputString) {
+        Map<Character, Integer> counters = new HashMap<>();
+        for(int i=0; i<inputString.length(); i++){
+            Integer counter = counters.get(inputString.charAt(i));
+            if(counter == null) {
+                counter = 0;
+            }
+            counters.put(inputString.charAt(i), ++counter);
+        }
+
+        int odds = 0;
+        for(Character c : counters.keySet()) {
+            if(counters.get(c) % 2 != 0) {
+                odds++;
+            }
+        }
+
+        return odds <= 1;
     }
 
 }

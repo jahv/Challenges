@@ -132,4 +132,18 @@ public class $4_ExploringTheWatersTest {
         Assert.assertEquals(12, $4_ExploringTheWaters.arrayChange(new int[]{2, 1, 10, 1}));
         Assert.assertEquals(13, $4_ExploringTheWaters.arrayChange(new int[]{2, 3, 3, 5, 5, 5, 4, 12, 12, 10, 15}));
     }
+
+    @Test
+    public void palindromeRearrangingTest() {
+        Assert.assertTrue($4_ExploringTheWaters.palindromeRearranging("aabb"));
+        Assert.assertFalse($4_ExploringTheWaters.palindromeRearranging("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc"));
+        Assert.assertTrue($4_ExploringTheWaters.palindromeRearranging("abbcabb"));
+        Assert.assertTrue($4_ExploringTheWaters.palindromeRearranging("zyyzzzzz"));
+        Assert.assertTrue($4_ExploringTheWaters.palindromeRearranging("z"));
+        Assert.assertTrue($4_ExploringTheWaters.palindromeRearranging("zaa"));
+        Assert.assertFalse($4_ExploringTheWaters.palindromeRearranging("abca"));
+        Assert.assertFalse($4_ExploringTheWaters.palindromeRearranging("abcad"));
+        Assert.assertFalse($4_ExploringTheWaters.palindromeRearranging("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbccccaaaaaaaaaaaaa"));
+        Assert.assertFalse($4_ExploringTheWaters.palindromeRearranging("abdhuierf"));
+    }
 }
