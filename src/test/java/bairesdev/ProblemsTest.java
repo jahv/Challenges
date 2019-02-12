@@ -36,4 +36,26 @@ public class ProblemsTest {
         Assert.assertTrue(Problems.balanced(""));
 
     }
+
+    @Test
+    public void closingBrackets() {
+        Assert.assertEquals(8, Problems.findClosingBracketIndex(0, "[ABC[23]][89]"));
+        Assert.assertEquals(7, Problems.findClosingBracketIndex(4, "[ABC[23]][89]"));
+        Assert.assertEquals(12, Problems.findClosingBracketIndex(9, "[ABC[23]][89]"));
+        Assert.assertEquals(-1, Problems.findClosingBracketIndex(2, "[ABC[23]][89]"));
+    }
+
+    @Test
+    public void parenthesesMatching() {
+        Assert.assertTrue(Problems.parenthesesMatching("(a[0]+b[2c[6]]) {24 + 53}"));
+        Assert.assertTrue(Problems.parenthesesMatching("f(e(d))"));
+        Assert.assertTrue(Problems.parenthesesMatching("[()]{}([])"));
+        Assert.assertFalse(Problems.parenthesesMatching("((b)"));
+        Assert.assertFalse(Problems.parenthesesMatching("(c]"));
+        Assert.assertFalse(Problems.parenthesesMatching("{(a[])"));
+        Assert.assertFalse(Problems.parenthesesMatching("([)]"));
+        Assert.assertFalse(Problems.parenthesesMatching(")("));
+        Assert.assertFalse(Problems.parenthesesMatching(""));
+    }
 }
+

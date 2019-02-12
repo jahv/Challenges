@@ -3,6 +3,7 @@ package codefight.arcade;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class $5_IslandOfKnowledge {
 
@@ -338,4 +339,20 @@ public class $5_IslandOfKnowledge {
     }
 
 
+public int a;
+public    int b;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        $5_IslandOfKnowledge that = ($5_IslandOfKnowledge) o;
+        return a == that.a &&
+                b == that.b;
+    }
+
+    @Override
+    public int hashCode() {
+        return 2;
+    }
 }

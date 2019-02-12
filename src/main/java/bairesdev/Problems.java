@@ -97,6 +97,64 @@ public class Problems {
         return result;
     }
 
+    public static int findClosingBracketIndex(int openingBracketIndex, String string) {
+        int result = -1;
+        Character openingBracket = '[';
+        Character closingBracket = ']';
+
+        if(string.charAt(openingBracketIndex) == openingBracket) {
+            Stack<Character> stack = new Stack<>();
+
+            for (int i = openingBracketIndex; i < string.length(); i++) {
+
+                if (string.charAt(i) == openingBracket) {
+                    stack.push(string.charAt(i));
+                } else if (string.charAt(i) == closingBracket) {
+                    stack.pop();
+                    if (stack.empty()) {
+                        result = i;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+
+    public static boolean parenthesesMatching(String string) {
+        boolean result = false;
+
+        Map<Character, Character> brackets = new HashMap<>();
+        brackets.put('(',')');
+        brackets.put('[',']');
+        brackets.put('{','}');
+
+        Stack<Character> stack = new Stack<>();
+        boolean worked = false;
+
+        for(int i=0; i<string.length(); i++) {
+            if(brackets.containsKey(string.charAt(i))) {
+                stack.push(brackets.get(string.charAt(i)));
+                worked = true;
+            }
+
+            if(brackets.containsValue(string.charAt(i))) {
+                if(stack.empty()) {
+                    break;
+                } else if(!stack.peek().equals(string.charAt(i))) {
+                    break;
+                }
+                stack.pop();
+            }
+        }
+
+        if(stack.empty() && worked) {
+            result = true;
+        }
+
+        return result;
+    }
 
 
 }

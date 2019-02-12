@@ -3,6 +3,8 @@ package codefight.arcade;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 public class $5_IslandOfKnowledgeTest {
 
     @Test
@@ -68,9 +70,21 @@ public class $5_IslandOfKnowledgeTest {
                 $5_IslandOfKnowledge.minesweeper(new boolean[][]{{false, true, true, false},
                         {true, true, false, true},
                         {false, false, true, false}})));
+
+
+//        HashMap<$5_IslandOfKnowledge, Integer> n = new HashMap<>();
+//        $5_IslandOfKnowledge aa = new $5_IslandOfKnowledge();
+//        aa.a=1;
+//        aa.b=1;
+//        $5_IslandOfKnowledge bb = new $5_IslandOfKnowledge();
+//        bb.a=2;
+//
+//        n.put()
+
     }
 
     private boolean matrixesEqual(int[][]a, int[][]b){
+
         if(a.length == b.length & a[0].length == b[0].length) {
             for(int i=0; i<a.length; i++) {
                 for (int j=0; j<a[i].length; j++) {

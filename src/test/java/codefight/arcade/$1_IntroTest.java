@@ -30,4 +30,20 @@ public class $1_IntroTest {
         Assert.assertFalse($1_Intro.checkPalindrome("abc"));
         Assert.assertFalse($1_Intro.checkPalindrome("abca"));
     }
+
+    public void testest() {
+        int[] arr = new int[]{1,2,3,4,5,6};
+
+
+    }
+
+    int countEntInArr(int[] arr, int ent) {
+        int c = 0;
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] == ent) {
+                c++;
+            }
+        }
+        return c;
+    }
 }
